@@ -17,6 +17,7 @@ const notes = require('./routes/notes');
 const contacts = require('./routes/contacts');
 const auth = require('./routes/auth');
 const error = require('./routes/error');
+const keys = require('./keys');
 
 const User = require('./models/user');
 
@@ -24,11 +25,10 @@ const User = require('./models/user');
 
 const PORT = 3000;
 const app = express();
-const MONGODB_URI = 'mongodb+srv://NikShein:NIKshein9306@cluster0.r3pqp.mongodb.net/mynotes';
 
 const store = new MongoStore({
     collection: 'sessions',
-    uri: MONGODB_URI
+    uri: keys.MONGODB_URI
 })
 
 
@@ -51,7 +51,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 app.use(session({
-    secret: 'some secret',
+    secret: keys.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store
@@ -75,7 +75,7 @@ app.use('/error', error);
 
 async function start() {
     try {
-        await mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
+        await mongoose.connect(keys.MONGODB_URI, {useNewUrlParser: true});
         app.listen(PORT, () => {
             console.log('Server ----------------------------- OK');
         })
