@@ -1,0 +1,22 @@
+<main class="main">
+    <h1>{{ title }}</h1>
+    <div class="card-wrapper">
+        <div class="card note">
+            <h2>{{ note.noteTitle }}</h2>
+            <p>{{ note.text }}</p>
+            <div class="info">
+                <span>{{ dateTransform note.createdAt }}</span>
+                <span>{{ note.author }}</span>
+            </div>
+        </div>
+        <section class="edit-buttons">
+            <button><a href="/notes/{{note.id}}/edit?allow=true"><i class="fas fa-edit"></i></a></button>
+            <form action="/notes/remove" method="post">
+                <input type="hidden" name="id" value="{{ note.id }}">
+                <button><i class="far fa-trash-alt"></i></button>
+                <input type="hidden" name="_csrf" value="{{csrf}}"> 
+            </form>
+        </section>
+    </div>
+</main>
+

@@ -1,0 +1,15 @@
+<main class="main">
+    <h1>Редактировать {{note.noteTitle}}</h1>
+    <div class="card-wrapper">
+        <div class="note">
+            <form id="post-form" method="post" action="/notes/edit">
+                <input type="text" name="noteTitle" value="{{note.noteTitle}}" required>
+                <input type="text" name="author" value="{{note.author}}" required>
+                <textarea name="text" required> {{note.text}} </textarea>
+                <button class="addButton" type="submit">Сохранить</button>
+                <input type="hidden" name="id" value="{{note.id}}">
+                <input type="hidden" name="_csrf" value="{{csrf}}"> 
+            </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,75 @@
+<header class="header">
+    <div class="logo">
+        <a href="/">MyNotes</a>
+    </div>
+    <div class="burger-buttons">
+        <input class="cb" id="box" type="checkbox" />
+        <label for="box"></label>
+        <button class="burger"><i class="fas fa-bars"></i></button>
+    </div>
+    
+    <ul class="menu">
+        
+
+        {{#if isAuth}}
+            {{#if isHome}}
+                <li><a href="/" class="active">Главная</a></li>
+            {{else}}
+                <li><a href="/">Главная</a></li>
+            {{/if}}
+
+            {{#if isPosts}}
+            <li><a href="/notes" class="active">Заметки</a></li>
+            {{else}}
+                <li><a href="/notes">Заметки</a></li>
+            {{/if}}
+
+            {{#if isContacts}}
+                <li><a href="/contacts" class="active">Кoнтакты</a></li>
+            {{else}}
+                <li><a href="/contacts">Кoнтакты</a></li>
+            {{/if}}
+
+            <li>
+                <input class="cb" id="box" type="checkbox" />
+                <label for="box"></label>
+            </li>
+
+            <li><a href="/auth/logout"><i class="fas fa-sign-out-alt"></i></a></li>
+
+        {{else}}
+            <li>
+                <input class="cb" id="box1" type="checkbox" />
+                <label for="box1"></label>
+            </li>
+            {{#if isLogin}}
+                <li><a href="/auth/login" class="active"><i class="fas fa-sign-in-alt"></i></a></li>
+            {{else}}
+                <li><a href="/auth/login"><i class="fas fa-sign-in-alt"></i></a></li>
+            {{/if}}
+            {{#if isRegister}}
+                <li><a href="/auth/register" class="active"><i class="far fa-user-circle"></i></a></li>
+            {{else}}
+                <li><a href="/auth/register"><i class="far fa-user-circle"></i></a></li>
+            {{/if}}
+        {{/if}}
+    </ul>
+</header>
+<div class="sidebar-wrapper">
+    <aside class="sidebar">
+        {{#if isAuth}}
+            <nav>
+                <a class="sidebar-item" href="/">Главная</a>
+                <a class="sidebar-item" href="/notes">Заметки</a>
+                <a class="sidebar item" href="/contacts">Контакты</a>
+                <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i></a>
+            </nav>
+        {{else}}
+            <nav>
+                <a href="/auth/login"><i class="fas fa-sign-in-alt"></i></a>
+                <a href="/auth/register"><i class="far fa-user-circle"></i></a>
+            </nav>
+        {{/if}}
+    </aside>
+</div>
+

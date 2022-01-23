@@ -1,0 +1,68 @@
+<main class="main">
+    <h1>{{title}}</h1>
+    {{#if isAuth}}
+    <div class="cards">
+        <div class="card-wrapper">
+            <h2>{{ title_last_notes }}</h2>
+            <div class="flex-card">
+                {{#if notes.length }}
+                    {{#each notes}}
+                    <a href="/notes/{{id}}">
+                        <div class="card">
+                            <div class="text">
+                                <h2>{{noteTitle}}</h2>
+                                <div class="line"></div>
+                                <p>{{truncate text}}</p>
+                            </div>
+                            <div class="info">
+                                <span>{{dateTransform createdAt}}</span>
+                                <span>{{author}}</span>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                {{else}}
+                    <h3>Заметок пока нет</h3>
+                {{/if}}
+            </div>
+        </div>
+        <div class="card-wrapper">
+            <h2>{{ title_last_contacts }}</h2>
+            <div class="flex-card">
+                {{#if contact.length }}
+                    {{#each contact}}
+                    <a href="/contacts/{{id}}">
+                        <div class="card contact">
+                            <div class="user-card">
+                                <h3>{{ firstname }} {{ secondname }}</h3>
+                                <img src="/image/user_foto_dark.png">
+                            </div>
+                            <section>
+                                <p>Телефон: {{ tel }}</p>
+                                <p>E-mail: {{ mail }}</p>
+                            </section>
+                        </div>
+                    </a>
+                    {{/each}}
+                {{else}}
+                    <h3>Заметок пока нет</h3>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="notAuth">
+        <h2>Войдите в личный кабинет чтобы увидеть ваши заметки и контакты</h2>
+        <div>
+            <a href="/auth/login"><i class="fas fa-sign-in-alt"></i></a>
+            <a href="/auth/register"><i class="far fa-user-circle"></i></a>
+        </div>
+        
+        
+    </div>
+    
+    {{/if}}
+</main>
+
+
+

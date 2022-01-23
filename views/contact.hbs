@@ -1,0 +1,25 @@
+<main class="main">
+    <h1>{{ title }}</h1>
+    <div class="card-wrapper">
+        <div class="contact-wrapper">
+            <div class="contacts-data">
+                <img src="/image/user_foto_dark.png">
+                <p><i>Имя: <strong>{{ contact.firstname }}</strong></i></p>
+                <p><i>Фамилия: <strong>{{ contact.secondname }}</strong></i></p>
+                <p><i>Телефон: <strong>{{contact.tel}}</strong></i></p>
+                <p><i>E-mail: <strong>{{ contact.email }}</strong></i></p>
+                
+            </div>
+            
+        </div>
+        
+        <section class="edit-buttons">
+            <button><a href="/contacts/{{contact.id}}/edit?allow=true"><i class="fas fa-edit"></i></a></button>
+            <form action="/contacts/remove" method="post">
+                <input type="hidden" name="id" value="{{ contact.id }}">
+                <button><i class="far fa-trash-alt"></i></button>
+                <input type="hidden" name="_csrf" value="{{csrf}}"> 
+            </form>
+        </section>
+    </div>
+</main>

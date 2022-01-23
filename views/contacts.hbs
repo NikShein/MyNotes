@@ -1,0 +1,56 @@
+<main class="main">
+    <div class="add-data">
+        <button class="open-modal-button"><i class="fas fa-plus-circle"></i></button>
+        <div class="modal-window">
+            <div class="form">
+                <form class="form-add-note" id="contacts-form" method="post" action="/contacts">
+                    <label><h2>{{ addContactTitle }}</h2></label>
+                    <input type="text" name="firstname" placeholder="Введите имя" required>
+                    <input type="text" name="secondname" placeholder="Введите фамилию" required>
+                    <input type="tel" name="tel" placeholder="Введите телефон" required>
+                    <input type="email" name="email" placeholder="Введите e-mail" required>
+                    <button class="addButton"type="submit">Добавить</button>
+                    <input type="hidden" name="_csrf" value="{{csrf}}">
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>{{title}}</h1>
+    <div class="card-wrapper">
+        <div class="flex-card notes">
+            {{#if contacts.length}}
+                {{#each contacts}}
+                    <a href="/contacts/{{id}}">
+                        <div class="card">
+                            <div class="contacts">
+                                <div class="contacts-data">
+                                    <p><i>Имя: <strong>{{ firstname }}</strong></i></p>
+                                    <p><i>Фамилия: <strong>{{ secondname }}</strong></i></p>
+                                    <p><i>Телефон: <strong>{{ tel }}</strong></i></p>
+                                    <p><i>E-mail: <strong>{{ email }}</strong></i></p>
+                                </div>
+                                <img src="/image/user_foto_dark.png">
+                            </div>
+                            
+                            <div class="contact-edit">
+                                <button><object><a href="/contacts/{{id}}/edit?allow=true"><i class="fas fa-edit"></i></a></object></button>
+                                <form action="/contacts/remove" method="post">
+                                    <button><i class="far fa-trash-alt"></i></button>
+                                    <input type="hidden" name="id" value="{{ id }}">
+                                    <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                                </form>
+                            </div>
+                        </div>
+                    </a>
+                {{/each}}
+            {{else}}
+                <p>Пока нет контактов</p>
+            {{/if}}
+        </div>
+    </div>
+</main>
+
+
+
+
+{{!-- <script type="text/javascript" src="/scripts/modal-window.js" ></script> --}}

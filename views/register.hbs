@@ -1,0 +1,23 @@
+<main class="main">
+    <div class="auth">
+        <h1>{{ title }}</h1>
+        <div class="login">
+            <div class="card-wrapper ">
+                <div class="note">
+                    <form id="post-form" method="post" action="/auth/register">
+                        <input type="text" name="name" placeholder="Введите Имя" required>
+                        <input type="email" name="email" placeholder="Введите e-mail" required>
+                        <input type="password" name="password" placeholder="Введите пароль" required>
+                        <input type="password" name="confirm" placeholder="Подтвердите пароль" required>
+                        <button class="addButton" type="submit">Регистрация</button>
+                        <input type="hidden" name="_csrf" value="{{csrf}}"> 
+                    </form>
+                </div>
+                {{#if regError}}
+                    <h3 class="alert">{{ regError }}</h3>
+                {{/if}}
+            </div>
+            
+        </div>
+    </div>
+</main>

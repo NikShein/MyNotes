@@ -1,0 +1,20 @@
+<main class="main">
+    <div class="auth">
+        <h1>{{ title }}</h1>
+        <div class="login">
+            <div class="card-wrapper ">
+                <div class="note">
+                    <form id="post-form" method="post" action="/auth/login">
+                        <input type="email" name="email" placeholder="Введите e-mail" required>
+                        <input type="password" name="password" placeholder="Введите пароль" required>
+                        <button class="addButton" type="submit">Войти</button>
+                        <input type="hidden" name="_csrf" value="{{csrf}}"> 
+                    </form>
+                </div>
+                {{#if logError}}
+                    <h3 class="alert">{{ logError }}</h3>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</main>

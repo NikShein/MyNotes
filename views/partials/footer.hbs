@@ -1,0 +1,51 @@
+<header class="footer">
+    <div class="logo">
+        <a href="/">MyNotes</a>
+    </div>
+    <div class="burger-buttons">
+        <input class="cb" id="box" type="checkbox" />
+        <label for="box"></label>
+        <button class="burger"><i class="fas fa-bars"></i></button>
+    </div>
+    
+    <ul class="menu">
+        {{#if isHome}}
+            <li><a href="/" class="active">Главная</a></li>
+        {{else}}
+            <li><a href="/">Главная</a></li>
+        {{/if}}
+
+        {{#if isPosts}}
+            <li><a href="/notes" class="active">Заметки</a></li>
+        {{else}}
+            <li><a href="/notes">Заметки</a></li>
+        {{/if}}
+
+        {{#if isContacts}}
+            <li><a href="/contacts" class="active">Кoнтакты</a></li>
+        {{else}}
+            <li><a href="/contacts">Кoнтакты</a></li>
+        {{/if}}
+
+       <li>
+            <input class="cb" id="box" type="checkbox" />
+            <label for="box"></label>
+       </li>
+        <li><button><i class="fas fa-sign-in-alt"></i></button></li>
+        <li><button><i class="far fa-user-circle"></i></button></li>
+        
+    </ul>
+</header>
+<div class="sidebar-wrapper">
+    <aside class="sidebar">
+        <nav>
+            <a class="sidebar-item" href="/">Главная</a>
+            <a class="sidebar-item" href="/notes">Заметки</a>
+            <a class="sidebar item" href="/contacts">Контакты</a>
+        </nav>
+        <nav>
+            <button class="sidebar-item" ><i class="fas fa-sign-in-alt"></i></button>
+            <button class="sidebar-item" ><i class="far fa-user-circle"></i></button>
+        </nav>
+    </aside>
+</div>

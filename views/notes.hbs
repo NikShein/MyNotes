@@ -1,0 +1,45 @@
+<main class="main">
+    <div class="add-data">
+        <button class="open-modal-button"><i class="fas fa-plus-circle"></i></button>
+            <div class="modal-window">
+            <div class="form">
+                <form class="form-add-note" id="post-form" method="post" action="/notes">
+                <label><h2>{{ addNoteTitle }}</h2></label>
+                    <input type="text" name="title" placeholder="Введите заголовок..." required>
+                    <input type="text" name="author" placeholder="Введите автора..." required>
+                    <textarea name="text" placeholder="Введите заметку..." required></textarea>
+                    <button class="addButton"type="submit">Добавить</button>
+                    <input type="hidden" name="_csrf" value="{{csrf}}">
+                </form>
+            </div>
+        </div>
+    </div>
+    <h1>{{title}}</h1>
+    <div class="card-wrapper">
+        <div class="flex-card notes">
+            {{#if note.length}}
+                {{#each note}}
+                    <a href="/notes/{{id}}">
+                        <div class="card">
+                            <div class="text">
+                                <h2>{{ noteTitle }}</h2>
+                                <div class="line"></div>
+                                <p>{{ truncate text}}</p>
+                            </div>
+                            <div class="info">
+                                <span>{{ dateTransform createdAt }}</span>
+                                <span>{{ author }}</span>
+                            </div>
+                        </div>
+                    </a>
+                {{/each}}
+            {{else}}
+                <h3>Заметок пока нет</h3>
+            {{/if}}
+        </div>
+    </div>
+</main>
+
+
+
+{{!-- <script type="text/javascript" src="/scripts/modal-window.js"></script> --}}

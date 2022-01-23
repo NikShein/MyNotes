@@ -1,0 +1,16 @@
+<main class="main">
+    <h1>Редактировать {{title}}</h1>
+    <div class="card-wrapper">
+        <div class="note">
+            <form id="post-form" method="post" action="/contacts/edit">
+                <input type="text" name="firstname" placeholder="Введите имя" required value="{{contact.firstname}}">
+                <input type="text" name="secondname" placeholder="Введите фамилию" required value="{{contact.secondname}}">
+                <input type="tel" name="tel" placeholder="Введите телефон" required value="{{contact.tel}}">
+                <input type="email" name="mail" placeholder="Введите e-mail" required value="{{contact.email}}">
+                <button class="addButton" type="submit">Сохранить</button>
+                <input type="hidden" name="id" value="{{contact.id}}">
+                <input type="hidden" name="_csrf" value="{{csrf}}"> 
+            </form>
+        </div>
+    </div>
+</main>
